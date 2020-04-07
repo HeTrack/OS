@@ -51,6 +51,7 @@ public class Process {
 		PlanningProcess plan = new PlanningProcess();
 		// если поток прервался
 		if (QUANT == 0 && WorkTime > 0) {
+			priory--;
 			System.out.println("Процесс № " + id + " Поток: "
 					+ threads.get(i).getId() + " прерван. Времени осталось: "
 					+ threads.get(i).getThreadTime());

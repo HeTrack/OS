@@ -9,7 +9,7 @@ public class PlanningProcess {
 	private ArrayList<Process> processes = new ArrayList<>();
 	private Random rnd = new Random();
 	private  static int Waiting = 0;
-	private  final int QUANT = 10;
+	private  final int QUANT = 5;
 
 	public void IncreaseWait() {
 		 this.Waiting++;
