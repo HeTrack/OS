@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Process {
-	protected int id;
+	private int id;
 	private int QUANT;
 	private int WorkTime;
 	private int priory;
@@ -22,10 +22,10 @@ public class Process {
 
 		for (int i = 0; i < rnd.nextInt(3) + 1; i++) {
 			threads.add(new Thread(i, 4 * i + 5));
-			System.out.println("Поток " + threads.get(i).id
+			System.out.println("Поток " + threads.get(i).getThreadTime()
 					+ " был создан. Время жизни потока: "
-					+ threads.get(i).WorkTime);
-			this.WorkTime += threads.get(i).WorkTime;
+					+ threads.get(i).getThreadTime());
+			this.WorkTime += threads.get(i).getThreadTime();
 		}
 		System.out.println();
 	}
@@ -48,38 +48,40 @@ public class Process {
 	}
 
 	public void IfEndTime(int i, int QUANT) {
+		PlanningProcess plan = new PlanningProcess();
 		// если поток прервался
 		if (QUANT == 0 && WorkTime > 0) {
 			System.out.println("Процесс № " + id + " Поток: "
-					+ threads.get(i).id + " прерван. Времени осталось: "
-					+ threads.get(i).WorkTime);
-			System.out.println("Время ожидания = " + PlanningProcess.Waiting);
+					+ threads.get(i).getId() + " прерван. Времени осталось: "
+					+ threads.get(i).getThreadTime());
+			System.out.println("Время ожидания = " + plan.getWait());
 			System.out.println();
 			Thread thread = threads.get(i);
 			threads.remove(threads.get(i));
 			threads.add(thread);
 		} // если поток завершил работу
-		else if (threads.get(i).WorkTime == 0) {
-			System.out.println("Поток: " + threads.get(i).id + " завершен.");
+		else if (threads.get(i).getThreadTime() == 0) {
+			System.out.println("Поток: " + threads.get(i).getId() + " завершен.");
 		}
 		// Если последний поток завершил работу
-		if (threads.get(i).id == threads.size() - 1
-				&& threads.get(i).WorkTime == 0) {
-			System.out.println("Процесс № " + id + " завершил работу ");
-			System.out.println("Время ожидания = " + PlanningProcess.Waiting);
+		if (threads.get(i).getId() == threads.size() - 1
+				&& threads.get(i).getThreadTime() == 0) {
+			System.out.println("Процесс № " + id + " завершил работу ");			
+			System.out.println("Время ожидания = " + plan.getWait());
 			System.out.println("\n");
 		}
 	}
 
 	public void runProcess() {
 		for (int i = 0; i < threads.size(); i++) {
-			while (threads.get(i).WorkTime > 0 && QUANT > 0) {
+			while (threads.get(i).getThreadTime() > 0 && QUANT > 0) {
 				System.out.println("Процесс № " + id + " Поток: "
-						+ threads.get(i).id + " - " + threads.get(i).WorkTime);
+						+ threads.get(i).getId() + " - " + threads.get(i).getThreadTime());
 				QUANT--;
-				threads.get(i).WorkTime--;
+				threads.get(i).DecreTime();
 				WorkTime--;
-				PlanningProcess.Waiting++;
+				PlanningProcess plan = new PlanningProcess();
+				plan.IncreaseWait();
 				IfEndTime(i, QUANT);
 			}
 		}

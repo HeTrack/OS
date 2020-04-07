@@ -8,8 +8,15 @@ import java.util.Random;
 public class PlanningProcess {
 	private ArrayList<Process> processes = new ArrayList<>();
 	private Random rnd = new Random();
-	public static int Waiting = 0;
-	public static final int QUANT = 10;
+	private  static int Waiting = 0;
+	private  final int QUANT = 10;
+
+	public void IncreaseWait() {
+		 this.Waiting++;
+	}
+	public int getWait(){
+		return Waiting;
+	}
 
 	public void Plan() {
 		for (int i = 0; i < rnd.nextInt(4) + 2; i++) {
