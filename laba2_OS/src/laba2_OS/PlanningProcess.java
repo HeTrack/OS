@@ -20,31 +20,33 @@ public class PlanningProcess {
 
 	public void Plan() {
 		for (int i = 0; i < rnd.nextInt(4) + 2; i++) {
-			processes.add(new Process(1, i, QUANT));
-		}
-
-		// int size = processes.size();
+			processes.add(new Process(1, i, QUANT,1));
+		}		
 		for (int i = 0; i < processes.size(); i++) {
 			processes.get(i).runProcess();
 			if (processes.get(i).getProcTime() > 0) {
-				for (int j = 0; j < processes.size(); j++) {
+				processes.get(i).Quant(QUANT);
+				Process proc = processes.get(i);		
+				processes.remove(i);
+				for (int j = 0; j < processes.size()-1; j++) {
 					processes.get(i).setPriority(
 							(Waiting + processes.get(i).getProcTime())
 									/ processes.get(i).getProcTime());
 				}
-				processes.get(i).Quant(QUANT);
-				// processes.remove(processes.get(i));
-
+				
 				processes.sort(new Comparator<Process>() {
 					public int compare(Process o1, Process o2) {
-						if (o1.getPriority() == o2.getPriority())
+						if (o1.getvrPriority() == o2.getvrPriority())
 							return 0;
-						else if (o1.getPriority() > o2.getPriority())
+						else if (o1.getvrPriority() > o2.getvrPriority())
 							return 1;
 						else
 							return -1;
 					}
 				});
+				processes.add(proc);
+				
+				proc.setPriority(proc.getPriority());				
 				i--;
 			}
 

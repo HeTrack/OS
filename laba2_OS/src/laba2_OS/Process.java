@@ -10,11 +10,13 @@ public class Process {
 	private int WorkTime;
 	private int priory;
 	private List<Thread> threads;
+	private int vrempriory;
 
-	public Process(int priory, int id, int QUANT) {
+	public Process(int priory, int id, int QUANT,int vrempriory) {
 		this.id = id;
 		this.QUANT = QUANT;
 		this.priory = priory;
+		this.vrempriory = priory;
 		Random rnd = new Random();
 		threads = new ArrayList<>();
 		System.out.println("Создание: Процесс № " + id + " Квант времени: "
@@ -34,10 +36,12 @@ public class Process {
 		return WorkTime;
 	}
 
-	public int getPriority() {
-		return priory;
+	public int getvrPriority() {
+		return vrempriory;
 	}
-
+	public int getPriority(){
+return priory;
+	}
 	public void setPriority(int priory) {
 		this.priory = priory;
 	}
@@ -51,7 +55,7 @@ public class Process {
 		PlanningProcess plan = new PlanningProcess();
 		// если поток прервался
 		if (QUANT == 0 && WorkTime > 0) {
-			priory--;
+			vrempriory = priory--;	
 			System.out.println("Процесс № " + id + " Поток: "
 					+ threads.get(i).getId() + " прерван. Времени осталось: "
 					+ threads.get(i).getThreadTime());
