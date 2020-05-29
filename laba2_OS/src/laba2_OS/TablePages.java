@@ -8,7 +8,7 @@ public class TablePages {
 
     public Page removePageWithAddress(int address) {
         for (Page page : pages) {
-            if (page.isHasAddress(address)) {
+            if (page.isExist(address)) {
                  return pages.remove(pages.indexOf(page));
             }
         }

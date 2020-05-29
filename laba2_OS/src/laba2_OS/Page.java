@@ -22,7 +22,7 @@ public class Page {
         numberCalls = 0;
     }
 
-    public boolean isHasAddress(int address) {
+    public boolean isExist(int address) {
         return (Address <= address && address <= Address + size);
     }
 

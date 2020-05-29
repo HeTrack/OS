@@ -8,7 +8,10 @@ public class Main {
         MemoryManagerUnit manager = new MemoryManagerUnit(128);
 
         for (int i = 0; i < 10; i++) {
-            manager.RequestPage(random.nextInt(1024));
+        	int rnd = random.nextInt(1024);
+        	 System.out.println("ƒобавление страницы в физическую пам€ть:" + rnd);
+            manager.RequestPage(rnd);
+           
         }
     }
 }

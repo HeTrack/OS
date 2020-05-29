@@ -19,7 +19,7 @@ public class TableBlock {
 
     public Page getPageWithAddress(int address) {
         for (int i = 0; i < size; i++) {
-            if (Block[i].isHasAddress(address)) 
+            if (Block[i].isExist(address)) 
             	return Block[i];
         }
 
