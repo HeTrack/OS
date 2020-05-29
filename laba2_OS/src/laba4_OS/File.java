@@ -1,18 +1,20 @@
 package laba4_OS;
+
 public class File {
 	private int fileSize;
 	private int fileId;
-	private Knot knots;
-
-	public File(int fileId, int fileSize) {
+	private String Name;
+	
+	private Knot knot;
+	
+	public File(int fileId, int fileSize, String Name) {
 		this.fileId = fileId;
 		this.fileSize = fileSize;
+		this.Name = Name;
 	}
-
 	public Knot getKnot() {
-		return knots.nextKnot();
+		return knot.nextKnot();
 	}
-	
 	public int getId() {
 		return fileId;
 	}
@@ -20,4 +22,7 @@ public class File {
 	public int fileSize() {
 		return fileSize;
 	}
-} 
+	public String fileName() {
+		return Name;
+	}
+}

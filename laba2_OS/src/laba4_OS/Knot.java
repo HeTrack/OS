@@ -1,7 +1,10 @@
 package laba4_OS;
- public class Knot {
+ 
+public class Knot {
 	private int knotId;
 	private int fileId;
+	private boolean select;
+	
 	private Knot knot;
 
 	public Knot(int fileId, int knotId) {
@@ -13,16 +16,24 @@ package laba4_OS;
 		this.fileId = fileId;
 	}
 
-	public int getKnotId() {
-		return knotId;
-	}
-	
-	public void setKnot(int fileId, int knotId) {
+	public void setUzel(int fileId, int knotId) {
 		knot = new Knot(fileId, knotId);
 	}
 
 	public Knot nextKnot() {
 		return knot;
+	}
+
+	public int getKnotId() {
+		return knotId;
+	}
+
+	public boolean getSelect() {
+		return select;
+	}
+
+	public void setSelect(boolean select) {
+		this.select = select;
 	}
 
 	public int getId() {

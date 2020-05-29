@@ -27,6 +27,9 @@ public class Block {
 			} else {
 				g.setColor(Color.BLUE);
 			}
+			if (memory.get(i).getSelect()) {
+				g.setColor(Color.RED);
+			}
 		    g.fillRect(left, top, cellWidth, cellHeight);
 			g.setColor(Color.WHITE);
 			g.drawRect(left, top, cellWidth, cellHeight);
