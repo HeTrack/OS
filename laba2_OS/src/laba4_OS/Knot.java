@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Knot {	
 	public ArrayList<Block> TableBlocks = new ArrayList<Block>();
+	public DataManager manager;
 	private int fileSize;
 	private int fileId;
 	private int knotId;
@@ -42,5 +43,10 @@ public class Knot {
 	
 	public void setBlock() {
 		TableBlocks.add(block);
+	}
+	
+	public ArrayList<Block> getTableBlocks(int fileId) {
+		ArrayList<File> getfiles = manager.getFiles();
+		return getfiles.get(fileId).getKnot().TableBlocks;
 	}
 }

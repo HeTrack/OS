@@ -70,4 +70,7 @@ public class DataManager extends JPanel{
 	public ArrayList<Knot> getList() {
 		return memory;
 	}
+	public ArrayList<File> getFiles(){
+	return files;
+	}
 }
