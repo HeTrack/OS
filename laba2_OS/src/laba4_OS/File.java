@@ -3,28 +3,20 @@ package laba4_OS;
 import java.util.ArrayList;
 
 public class File {
+	private Knot knot;
 	private int fileSize;
 	private int fileId;
-	private String Name;
-	
-	private Knot knot;
-	
-	public File(int fileId, int fileSize, String Name) {
-		this.fileId = fileId;
-		this.fileSize = fileSize;
-		this.Name = Name;
+
+	public File(Knot knot) {
+		this.knot = knot;
 	}
-	public Knot getKnot() {
-		return knot.nextKnot();
+	
+	public Knot getKnot(){
+		return knot;
 	}
+	
 	public int getId() {
 		return fileId;
 	}
-
-	public int fileSize() {
-		return fileSize;
-	}
-	public String fileName() {
-		return Name;
-	}
-}
+	
+} 

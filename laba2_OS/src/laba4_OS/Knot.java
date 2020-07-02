@@ -2,43 +2,45 @@ package laba4_OS;
 
 import java.util.ArrayList;
 
-public class Knot {
-	private int knotId;
+public class Knot {	
+	public ArrayList<Block> TableBlocks = new ArrayList<Block>();
+	private int fileSize;
 	private int fileId;
-	private boolean select;
-	
+	private int knotId;
 	private Knot knot;
-
-	public Knot(int fileId, int knotId) {
+	private Block block;
+	
+	public Knot(int knotId, int fileId, int fileSize) {
+	    this.knotId = knotId;
 		this.fileId = fileId;
-		this.knotId = knotId;
-	}
+		this.fileSize = fileSize;
 
-	public void setFile(int fileId) {
-		this.fileId = fileId;
+	} 
+	public ArrayList<Block> getTableBlocks() {
+		return TableBlocks;
 	}
-
-	public void setUzel(int fileId, int knotId) {
-		knot = new Knot(fileId, knotId);
+	
+	public int getId() {
+		return fileId;
 	}
-
+	
+	public void setId(int id) {
+		this.fileId = id;
+	}
+	
+	public void setSize(int size) {
+		this.fileSize = size;
+	}
+	
+	public int getSize() {
+		return fileSize;
+	}
+	
 	public Knot nextKnot() {
 		return knot;
 	}
-
-	public int getKnotId() {
-		return knotId;
-	}
-
-	public boolean getSelect() {
-		return select;
-	}
-
-	public void setSelect(boolean select) {
-		this.select = select;
-	}
-
-	public int getId() {
-		return fileId;
+	
+	public void setBlock() {
+		TableBlocks.add(block);
 	}
 }
